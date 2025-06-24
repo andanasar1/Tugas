@@ -40,12 +40,12 @@
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet-measure.js"></script>
         <script src="data/KotaBekasi_1.js"></script>
-        <script src="data/KepadatanBekasi_2.js"></script>
-        <script src="data/PertumbuhanBekasi_3.js"></script>
-        <script src="data/PendudukBekasi_4.js"></script>
-        <script src="data/Pendidikan_5.js"></script>
-        <script src="data/Ibadah_6.js"></script>
-        <script src="data/Pemerintahan_7.js"></script>
+        <script src="data/KepadatanPenduduk_2.js"></script>
+        <script src="data/PertumbuhanPenduduk_3.js"></script>
+        <script src="data/JumlahPenduduk_4.js"></script>
+        <script src="data/Sekolah_5.js"></script>
+        <script src="data/TempatIbadah_6.js"></script>
+        <script src="data/KantorPemerintahan_7.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
@@ -310,21 +310,6 @@
                 interactive: true,
             }
                     break;
-                default:
-                    return {
-                pane: 'pane_KotaBekasi_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(239,69,57,1.0)',
-                interactive: true,
-            }
-                    break;
             }
         }
         map.createPane('pane_KotaBekasi_1');
@@ -341,7 +326,7 @@
         });
         bounds_group.addLayer(layer_KotaBekasi_1);
         map.addLayer(layer_KotaBekasi_1);
-        function pop_KepadatanBekasi_2(feature, layer) {
+        function pop_KepadatanPenduduk_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['WADMKC'] !== null ? autolinker.link(String(feature.properties['WADMKC']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -361,11 +346,10 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_KepadatanBekasi_2_0(feature) {
-            switch(String(feature.properties['Kepadatan'])) {
-                case '6000.0':
-                    return {
-                pane: 'pane_KepadatanBekasi_2',
+        function style_KepadatanPenduduk_2_0(feature) {
+            if (feature.properties['Kepadatan'] >= 5000.000000 && feature.properties['Kepadatan'] <= 5000.000000 ) {
+                return {
+                pane: 'pane_KepadatanPenduduk_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -374,13 +358,13 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(216,227,93,1.0)',
+                fillColor: 'rgba(215,25,28,1.0)',
                 interactive: true,
             }
-                    break;
-                case '7000.0':
-                    return {
-                pane: 'pane_KepadatanBekasi_2',
+            }
+            if (feature.properties['Kepadatan'] >= 5000.000000 && feature.properties['Kepadatan'] <= 10000.000000 ) {
+                return {
+                pane: 'pane_KepadatanPenduduk_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -389,13 +373,13 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(86,204,155,1.0)',
+                fillColor: 'rgba(253,174,97,1.0)',
                 interactive: true,
             }
-                    break;
-                case '9000.0':
-                    return {
-                pane: 'pane_KepadatanBekasi_2',
+            }
+            if (feature.properties['Kepadatan'] >= 10000.000000 && feature.properties['Kepadatan'] <= 15000.000000 ) {
+                return {
+                pane: 'pane_KepadatanPenduduk_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -404,13 +388,13 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(179,110,229,1.0)',
+                fillColor: 'rgba(255,255,191,1.0)',
                 interactive: true,
             }
-                    break;
-                case '11000.0':
-                    return {
-                pane: 'pane_KepadatanBekasi_2',
+            }
+            if (feature.properties['Kepadatan'] >= 15000.000000 && feature.properties['Kepadatan'] <= 20000.000000 ) {
+                return {
+                pane: 'pane_KepadatanPenduduk_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -419,13 +403,13 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(28,108,220,1.0)',
+                fillColor: 'rgba(171,221,164,1.0)',
                 interactive: true,
             }
-                    break;
-                case '12000.0':
-                    return {
-                pane: 'pane_KepadatanBekasi_2',
+            }
+            if (feature.properties['Kepadatan'] >= 20000.000000 && feature.properties['Kepadatan'] <= 30000.000000 ) {
+                return {
+                pane: 'pane_KepadatanPenduduk_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -434,132 +418,26 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(96,84,226,1.0)',
+                fillColor: 'rgba(43,131,186,1.0)',
                 interactive: true,
             }
-                    break;
-                case '13000.0':
-                    return {
-                pane: 'pane_KepadatanBekasi_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(207,44,29,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '14000.0':
-                    return {
-                pane: 'pane_KepadatanBekasi_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(82,238,95,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '15000.0':
-                    return {
-                pane: 'pane_KepadatanBekasi_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(98,225,236,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '17000.0':
-                    return {
-                pane: 'pane_KepadatanBekasi_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(232,75,140,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '18000.0':
-                    return {
-                pane: 'pane_KepadatanBekasi_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(226,169,90,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '19000.0':
-                    return {
-                pane: 'pane_KepadatanBekasi_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(154,210,116,1.0)',
-                interactive: true,
-            }
-                    break;
-                default:
-                    return {
-                pane: 'pane_KepadatanBekasi_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(212,110,203,1.0)',
-                interactive: true,
-            }
-                    break;
             }
         }
-        map.createPane('pane_KepadatanBekasi_2');
-        map.getPane('pane_KepadatanBekasi_2').style.zIndex = 402;
-        map.getPane('pane_KepadatanBekasi_2').style['mix-blend-mode'] = 'normal';
-        var layer_KepadatanBekasi_2 = new L.geoJson(json_KepadatanBekasi_2, {
+        map.createPane('pane_KepadatanPenduduk_2');
+        map.getPane('pane_KepadatanPenduduk_2').style.zIndex = 402;
+        map.getPane('pane_KepadatanPenduduk_2').style['mix-blend-mode'] = 'normal';
+        var layer_KepadatanPenduduk_2 = new L.geoJson(json_KepadatanPenduduk_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_KepadatanBekasi_2',
-            layerName: 'layer_KepadatanBekasi_2',
-            pane: 'pane_KepadatanBekasi_2',
-            onEachFeature: pop_KepadatanBekasi_2,
-            style: style_KepadatanBekasi_2_0,
+            dataVar: 'json_KepadatanPenduduk_2',
+            layerName: 'layer_KepadatanPenduduk_2',
+            pane: 'pane_KepadatanPenduduk_2',
+            onEachFeature: pop_KepadatanPenduduk_2,
+            style: style_KepadatanPenduduk_2_0,
         });
-        bounds_group.addLayer(layer_KepadatanBekasi_2);
-        map.addLayer(layer_KepadatanBekasi_2);
-        function pop_PertumbuhanBekasi_3(feature, layer) {
+        bounds_group.addLayer(layer_KepadatanPenduduk_2);
+        map.addLayer(layer_KepadatanPenduduk_2);
+        function pop_PertumbuhanPenduduk_3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['WADMKC'] !== null ? autolinker.link(String(feature.properties['WADMKC']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -579,11 +457,10 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_PertumbuhanBekasi_3_0(feature) {
-            switch(String(feature.properties['LajuTumbuh'])) {
-                case '0.32':
-                    return {
-                pane: 'pane_PertumbuhanBekasi_3',
+        function style_PertumbuhanPenduduk_3_0(feature) {
+            if (feature.properties['LajuTumbuh'] >= 0.320000 && feature.properties['LajuTumbuh'] <= 0.500000 ) {
+                return {
+                pane: 'pane_PertumbuhanPenduduk_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -592,13 +469,13 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(184,78,219,1.0)',
+                fillColor: 'rgba(215,25,28,1.0)',
                 interactive: true,
             }
-                    break;
-                case '0.42':
-                    return {
-                pane: 'pane_PertumbuhanBekasi_3',
+            }
+            if (feature.properties['LajuTumbuh'] >= 0.500000 && feature.properties['LajuTumbuh'] <= 1.000000 ) {
+                return {
+                pane: 'pane_PertumbuhanPenduduk_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -607,13 +484,13 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(212,222,18,1.0)',
+                fillColor: 'rgba(253,174,97,1.0)',
                 interactive: true,
             }
-                    break;
-                case '0.44':
-                    return {
-                pane: 'pane_PertumbuhanBekasi_3',
+            }
+            if (feature.properties['LajuTumbuh'] >= 1.000000 && feature.properties['LajuTumbuh'] <= 1.500000 ) {
+                return {
+                pane: 'pane_PertumbuhanPenduduk_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -622,13 +499,13 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(240,158,42,1.0)',
+                fillColor: 'rgba(255,255,191,1.0)',
                 interactive: true,
             }
-                    break;
-                case '0.58':
-                    return {
-                pane: 'pane_PertumbuhanBekasi_3',
+            }
+            if (feature.properties['LajuTumbuh'] >= 1.500000 && feature.properties['LajuTumbuh'] <= 2.000000 ) {
+                return {
+                pane: 'pane_PertumbuhanPenduduk_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -637,13 +514,13 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(130,186,219,1.0)',
+                fillColor: 'rgba(171,221,164,1.0)',
                 interactive: true,
             }
-                    break;
-                case '0.6':
-                    return {
-                pane: 'pane_PertumbuhanBekasi_3',
+            }
+            if (feature.properties['LajuTumbuh'] >= 2.000000 && feature.properties['LajuTumbuh'] <= 4.000000 ) {
+                return {
+                pane: 'pane_PertumbuhanPenduduk_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -652,147 +529,26 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(206,14,164,1.0)',
+                fillColor: 'rgba(43,131,186,1.0)',
                 interactive: true,
             }
-                    break;
-                case '0.63':
-                    return {
-                pane: 'pane_PertumbuhanBekasi_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(208,28,88,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '0.82':
-                    return {
-                pane: 'pane_PertumbuhanBekasi_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(232,133,117,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '1.12':
-                    return {
-                pane: 'pane_PertumbuhanBekasi_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(110,230,106,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '1.35':
-                    return {
-                pane: 'pane_PertumbuhanBekasi_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(138,206,74,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '2.0':
-                    return {
-                pane: 'pane_PertumbuhanBekasi_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(33,61,204,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '2.42':
-                    return {
-                pane: 'pane_PertumbuhanBekasi_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(115,226,165,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '3.11':
-                    return {
-                pane: 'pane_PertumbuhanBekasi_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(27,226,206,1.0)',
-                interactive: true,
-            }
-                    break;
-                default:
-                    return {
-                pane: 'pane_PertumbuhanBekasi_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(130,95,219,1.0)',
-                interactive: true,
-            }
-                    break;
             }
         }
-        map.createPane('pane_PertumbuhanBekasi_3');
-        map.getPane('pane_PertumbuhanBekasi_3').style.zIndex = 403;
-        map.getPane('pane_PertumbuhanBekasi_3').style['mix-blend-mode'] = 'normal';
-        var layer_PertumbuhanBekasi_3 = new L.geoJson(json_PertumbuhanBekasi_3, {
+        map.createPane('pane_PertumbuhanPenduduk_3');
+        map.getPane('pane_PertumbuhanPenduduk_3').style.zIndex = 403;
+        map.getPane('pane_PertumbuhanPenduduk_3').style['mix-blend-mode'] = 'normal';
+        var layer_PertumbuhanPenduduk_3 = new L.geoJson(json_PertumbuhanPenduduk_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PertumbuhanBekasi_3',
-            layerName: 'layer_PertumbuhanBekasi_3',
-            pane: 'pane_PertumbuhanBekasi_3',
-            onEachFeature: pop_PertumbuhanBekasi_3,
-            style: style_PertumbuhanBekasi_3_0,
+            dataVar: 'json_PertumbuhanPenduduk_3',
+            layerName: 'layer_PertumbuhanPenduduk_3',
+            pane: 'pane_PertumbuhanPenduduk_3',
+            onEachFeature: pop_PertumbuhanPenduduk_3,
+            style: style_PertumbuhanPenduduk_3_0,
         });
-        bounds_group.addLayer(layer_PertumbuhanBekasi_3);
-        map.addLayer(layer_PertumbuhanBekasi_3);
-        function pop_PendudukBekasi_4(feature, layer) {
+        bounds_group.addLayer(layer_PertumbuhanPenduduk_3);
+        map.addLayer(layer_PertumbuhanPenduduk_3);
+        function pop_JumlahPenduduk_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['WADMKC'] !== null ? autolinker.link(String(feature.properties['WADMKC']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -811,11 +567,10 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_PendudukBekasi_4_0(feature) {
-            switch(String(feature.properties['Penduduk'])) {
-                default:
-                    return {
-                pane: 'pane_PendudukBekasi_4',
+        function style_JumlahPenduduk_4_0(feature) {
+            if (feature.properties['Penduduk'] >= 111440.000000 && feature.properties['Penduduk'] <= 150000.000000 ) {
+                return {
+                pane: 'pane_JumlahPenduduk_4',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -824,13 +579,13 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(191,72,215,1.0)',
+                fillColor: 'rgba(215,25,28,1.0)',
                 interactive: true,
             }
-                    break;
-                case '111440.0':
-                    return {
-                pane: 'pane_PendudukBekasi_4',
+            }
+            if (feature.properties['Penduduk'] >= 150000.000000 && feature.properties['Penduduk'] <= 200000.000000 ) {
+                return {
+                pane: 'pane_JumlahPenduduk_4',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -839,13 +594,13 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(212,89,179,1.0)',
+                fillColor: 'rgba(253,174,97,1.0)',
                 interactive: true,
             }
-                    break;
-                case '131290.0':
-                    return {
-                pane: 'pane_PendudukBekasi_4',
+            }
+            if (feature.properties['Penduduk'] >= 200000.000000 && feature.properties['Penduduk'] <= 250000.000000 ) {
+                return {
+                pane: 'pane_JumlahPenduduk_4',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -854,13 +609,13 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(72,92,237,1.0)',
+                fillColor: 'rgba(255,255,191,1.0)',
                 interactive: true,
             }
-                    break;
-                case '132560.0':
-                    return {
-                pane: 'pane_PendudukBekasi_4',
+            }
+            if (feature.properties['Penduduk'] >= 250000.000000 && feature.properties['Penduduk'] <= 300000.000000 ) {
+                return {
+                pane: 'pane_JumlahPenduduk_4',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -869,13 +624,13 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(213,66,166,1.0)',
+                fillColor: 'rgba(171,221,164,1.0)',
                 interactive: true,
             }
-                    break;
-                case '163380.0':
-                    return {
-                pane: 'pane_PendudukBekasi_4',
+            }
+            if (feature.properties['Penduduk'] >= 300000.000000 && feature.properties['Penduduk'] <= 400000.000000 ) {
+                return {
+                pane: 'pane_JumlahPenduduk_4',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -884,147 +639,26 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(151,134,81,1.0)',
+                fillColor: 'rgba(43,131,186,1.0)',
                 interactive: true,
             }
-                    break;
-                case '214220.0':
-                    return {
-                pane: 'pane_PendudukBekasi_4',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(86,136,148,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '225790.0':
-                    return {
-                pane: 'pane_PendudukBekasi_4',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(225,198,43,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '233680.0':
-                    return {
-                pane: 'pane_PendudukBekasi_4',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(162,36,133,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '254110.0':
-                    return {
-                pane: 'pane_PendudukBekasi_4',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(160,97,170,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '261480.0':
-                    return {
-                pane: 'pane_PendudukBekasi_4',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(42,66,199,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '265300.0':
-                    return {
-                pane: 'pane_PendudukBekasi_4',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(236,134,75,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '286110.0':
-                    return {
-                pane: 'pane_PendudukBekasi_4',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(173,183,84,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '347840.0':
-                    return {
-                pane: 'pane_PendudukBekasi_4',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(78,111,217,1.0)',
-                interactive: true,
-            }
-                    break;
             }
         }
-        map.createPane('pane_PendudukBekasi_4');
-        map.getPane('pane_PendudukBekasi_4').style.zIndex = 404;
-        map.getPane('pane_PendudukBekasi_4').style['mix-blend-mode'] = 'normal';
-        var layer_PendudukBekasi_4 = new L.geoJson(json_PendudukBekasi_4, {
+        map.createPane('pane_JumlahPenduduk_4');
+        map.getPane('pane_JumlahPenduduk_4').style.zIndex = 404;
+        map.getPane('pane_JumlahPenduduk_4').style['mix-blend-mode'] = 'normal';
+        var layer_JumlahPenduduk_4 = new L.geoJson(json_JumlahPenduduk_4, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PendudukBekasi_4',
-            layerName: 'layer_PendudukBekasi_4',
-            pane: 'pane_PendudukBekasi_4',
-            onEachFeature: pop_PendudukBekasi_4,
-            style: style_PendudukBekasi_4_0,
+            dataVar: 'json_JumlahPenduduk_4',
+            layerName: 'layer_JumlahPenduduk_4',
+            pane: 'pane_JumlahPenduduk_4',
+            onEachFeature: pop_JumlahPenduduk_4,
+            style: style_JumlahPenduduk_4_0,
         });
-        bounds_group.addLayer(layer_PendudukBekasi_4);
-        map.addLayer(layer_PendudukBekasi_4);
-        function pop_Pendidikan_5(feature, layer) {
+        bounds_group.addLayer(layer_JumlahPenduduk_4);
+        map.addLayer(layer_JumlahPenduduk_4);
+        function pop_Sekolah_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(String(feature.properties['OBJECTID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -1040,9 +674,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Pendidikan_5_0() {
+        function style_Sekolah_5_0() {
             return {
-                pane: 'pane_Pendidikan_5',
+                pane: 'pane_Sekolah_5',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -1056,27 +690,27 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Pendidikan_5');
-        map.getPane('pane_Pendidikan_5').style.zIndex = 405;
-        map.getPane('pane_Pendidikan_5').style['mix-blend-mode'] = 'normal';
-        var layer_Pendidikan_5 = new L.geoJson(json_Pendidikan_5, {
+        map.createPane('pane_Sekolah_5');
+        map.getPane('pane_Sekolah_5').style.zIndex = 405;
+        map.getPane('pane_Sekolah_5').style['mix-blend-mode'] = 'normal';
+        var layer_Sekolah_5 = new L.geoJson(json_Sekolah_5, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Pendidikan_5',
-            layerName: 'layer_Pendidikan_5',
-            pane: 'pane_Pendidikan_5',
-            onEachFeature: pop_Pendidikan_5,
+            dataVar: 'json_Sekolah_5',
+            layerName: 'layer_Sekolah_5',
+            pane: 'pane_Sekolah_5',
+            onEachFeature: pop_Sekolah_5,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Pendidikan_5_0(feature));
+                return L.circleMarker(latlng, style_Sekolah_5_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Pendidikan_5);
-        map.addLayer(layer_Pendidikan_5);
-        function pop_Ibadah_6(feature, layer) {
+        bounds_group.addLayer(layer_Sekolah_5);
+        map.addLayer(layer_Sekolah_5);
+        function pop_TempatIbadah_6(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(String(feature.properties['OBJECTID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -1092,11 +726,11 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Ibadah_6_0(feature) {
+        function style_TempatIbadah_6_0(feature) {
             switch(String(feature.properties['REMARK'])) {
                 case 'Gereja':
                     return {
-                pane: 'pane_Ibadah_6',
+                pane: 'pane_TempatIbadah_6',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -1112,7 +746,7 @@
                     break;
                 case 'Masjid':
                     return {
-                pane: 'pane_Ibadah_6',
+                pane: 'pane_TempatIbadah_6',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -1128,7 +762,7 @@
                     break;
                 case 'Peribadatan/Sosial Lainnya':
                     return {
-                pane: 'pane_Ibadah_6',
+                pane: 'pane_TempatIbadah_6',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -1144,7 +778,7 @@
                     break;
                 case 'Pura':
                     return {
-                pane: 'pane_Ibadah_6',
+                pane: 'pane_TempatIbadah_6',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -1158,45 +792,29 @@
                 interactive: true,
             }
                     break;
-                default:
-                    return {
-                pane: 'pane_Ibadah_6',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(32,225,135,1.0)',
-                interactive: true,
-            }
-                    break;
             }
         }
-        map.createPane('pane_Ibadah_6');
-        map.getPane('pane_Ibadah_6').style.zIndex = 406;
-        map.getPane('pane_Ibadah_6').style['mix-blend-mode'] = 'normal';
-        var layer_Ibadah_6 = new L.geoJson(json_Ibadah_6, {
+        map.createPane('pane_TempatIbadah_6');
+        map.getPane('pane_TempatIbadah_6').style.zIndex = 406;
+        map.getPane('pane_TempatIbadah_6').style['mix-blend-mode'] = 'normal';
+        var layer_TempatIbadah_6 = new L.geoJson(json_TempatIbadah_6, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Ibadah_6',
-            layerName: 'layer_Ibadah_6',
-            pane: 'pane_Ibadah_6',
-            onEachFeature: pop_Ibadah_6,
+            dataVar: 'json_TempatIbadah_6',
+            layerName: 'layer_TempatIbadah_6',
+            pane: 'pane_TempatIbadah_6',
+            onEachFeature: pop_TempatIbadah_6,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Ibadah_6_0(feature));
+                return L.circleMarker(latlng, style_TempatIbadah_6_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Ibadah_6);
-        map.addLayer(layer_Ibadah_6);
-        function pop_Pemerintahan_7(feature, layer) {
+        bounds_group.addLayer(layer_TempatIbadah_6);
+        map.addLayer(layer_TempatIbadah_6);
+        function pop_KantorPemerintahan_7(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(String(feature.properties['OBJECTID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -1212,27 +830,11 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Pemerintahan_7_0(feature) {
+        function style_KantorPemerintahan_7_0(feature) {
             switch(String(feature.properties['REMARK'])) {
-                case 'Kantor Bupati':
-                    return {
-                pane: 'pane_Pemerintahan_7',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(220,92,60,1.0)',
-                interactive: true,
-            }
-                    break;
                 case 'Kantor Camat':
                     return {
-                pane: 'pane_Pemerintahan_7',
+                pane: 'pane_KantorPemerintahan_7',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -1248,7 +850,7 @@
                     break;
                 case 'Kantor Kepala Desa':
                     return {
-                pane: 'pane_Pemerintahan_7',
+                pane: 'pane_KantorPemerintahan_7',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -1264,7 +866,7 @@
                     break;
                 case 'Kantor Lurah':
                     return {
-                pane: 'pane_Pemerintahan_7',
+                pane: 'pane_KantorPemerintahan_7',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -1280,7 +882,7 @@
                     break;
                 case 'Kantor Polisi':
                     return {
-                pane: 'pane_Pemerintahan_7',
+                pane: 'pane_KantorPemerintahan_7',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -1296,7 +898,7 @@
                     break;
                 case 'Kantor Wali Kota':
                     return {
-                pane: 'pane_Pemerintahan_7',
+                pane: 'pane_KantorPemerintahan_7',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -1310,44 +912,28 @@
                 interactive: true,
             }
                     break;
-                default:
-                    return {
-                pane: 'pane_Pemerintahan_7',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(124,162,222,1.0)',
-                interactive: true,
-            }
-                    break;
             }
         }
-        map.createPane('pane_Pemerintahan_7');
-        map.getPane('pane_Pemerintahan_7').style.zIndex = 407;
-        map.getPane('pane_Pemerintahan_7').style['mix-blend-mode'] = 'normal';
-        var layer_Pemerintahan_7 = new L.geoJson(json_Pemerintahan_7, {
+        map.createPane('pane_KantorPemerintahan_7');
+        map.getPane('pane_KantorPemerintahan_7').style.zIndex = 407;
+        map.getPane('pane_KantorPemerintahan_7').style['mix-blend-mode'] = 'normal';
+        var layer_KantorPemerintahan_7 = new L.geoJson(json_KantorPemerintahan_7, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Pemerintahan_7',
-            layerName: 'layer_Pemerintahan_7',
-            pane: 'pane_Pemerintahan_7',
-            onEachFeature: pop_Pemerintahan_7,
+            dataVar: 'json_KantorPemerintahan_7',
+            layerName: 'layer_KantorPemerintahan_7',
+            pane: 'pane_KantorPemerintahan_7',
+            onEachFeature: pop_KantorPemerintahan_7,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Pemerintahan_7_0(feature));
+                return L.circleMarker(latlng, style_KantorPemerintahan_7_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Pemerintahan_7);
-        map.addLayer(layer_Pemerintahan_7);
+        bounds_group.addLayer(layer_KantorPemerintahan_7);
+        map.addLayer(layer_KantorPemerintahan_7);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -1359,13 +945,13 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var overlaysTree = [
-            {label: 'Pemerintahan<br /><table><tr><td style="text-align: center;"><img src="legend/Pemerintahan_7_KantorBupati0.png" /></td><td>Kantor Bupati</td></tr><tr><td style="text-align: center;"><img src="legend/Pemerintahan_7_KantorCamat1.png" /></td><td>Kantor Camat</td></tr><tr><td style="text-align: center;"><img src="legend/Pemerintahan_7_KantorKepalaDesa2.png" /></td><td>Kantor Kepala Desa</td></tr><tr><td style="text-align: center;"><img src="legend/Pemerintahan_7_KantorLurah3.png" /></td><td>Kantor Lurah</td></tr><tr><td style="text-align: center;"><img src="legend/Pemerintahan_7_KantorPolisi4.png" /></td><td>Kantor Polisi</td></tr><tr><td style="text-align: center;"><img src="legend/Pemerintahan_7_KantorWaliKota5.png" /></td><td>Kantor Wali Kota</td></tr><tr><td style="text-align: center;"><img src="legend/Pemerintahan_7_6.png" /></td><td></td></tr></table>', layer: layer_Pemerintahan_7},
-            {label: 'Ibadah<br /><table><tr><td style="text-align: center;"><img src="legend/Ibadah_6_Gereja0.png" /></td><td>Gereja</td></tr><tr><td style="text-align: center;"><img src="legend/Ibadah_6_Masjid1.png" /></td><td>Masjid</td></tr><tr><td style="text-align: center;"><img src="legend/Ibadah_6_PeribadatanSosialLainnya2.png" /></td><td>Peribadatan/Sosial Lainnya</td></tr><tr><td style="text-align: center;"><img src="legend/Ibadah_6_Pura3.png" /></td><td>Pura</td></tr><tr><td style="text-align: center;"><img src="legend/Ibadah_6_4.png" /></td><td></td></tr></table>', layer: layer_Ibadah_6},
-            {label: '<img src="legend/Pendidikan_5.png" /> Pendidikan', layer: layer_Pendidikan_5},
-            {label: 'PendudukBekasi<br /><table><tr><td style="text-align: center;"><img src="legend/PendudukBekasi_4_0.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/PendudukBekasi_4_1114400000001.png" /></td><td>111440.000000</td></tr><tr><td style="text-align: center;"><img src="legend/PendudukBekasi_4_1312900000002.png" /></td><td>131290.000000</td></tr><tr><td style="text-align: center;"><img src="legend/PendudukBekasi_4_1325600000003.png" /></td><td>132560.000000</td></tr><tr><td style="text-align: center;"><img src="legend/PendudukBekasi_4_1633800000004.png" /></td><td>163380.000000</td></tr><tr><td style="text-align: center;"><img src="legend/PendudukBekasi_4_2142200000005.png" /></td><td>214220.000000</td></tr><tr><td style="text-align: center;"><img src="legend/PendudukBekasi_4_2257900000006.png" /></td><td>225790.000000</td></tr><tr><td style="text-align: center;"><img src="legend/PendudukBekasi_4_2336800000007.png" /></td><td>233680.000000</td></tr><tr><td style="text-align: center;"><img src="legend/PendudukBekasi_4_2541100000008.png" /></td><td>254110.000000</td></tr><tr><td style="text-align: center;"><img src="legend/PendudukBekasi_4_2614800000009.png" /></td><td>261480.000000</td></tr><tr><td style="text-align: center;"><img src="legend/PendudukBekasi_4_26530000000010.png" /></td><td>265300.000000</td></tr><tr><td style="text-align: center;"><img src="legend/PendudukBekasi_4_28611000000011.png" /></td><td>286110.000000</td></tr><tr><td style="text-align: center;"><img src="legend/PendudukBekasi_4_34784000000012.png" /></td><td>347840.000000</td></tr></table>', layer: layer_PendudukBekasi_4},
-            {label: 'PertumbuhanBekasi<br /><table><tr><td style="text-align: center;"><img src="legend/PertumbuhanBekasi_3_0320.png" /></td><td>0.32</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanBekasi_3_0421.png" /></td><td>0.42</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanBekasi_3_0442.png" /></td><td>0.44</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanBekasi_3_0583.png" /></td><td>0.58</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanBekasi_3_064.png" /></td><td>0.6</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanBekasi_3_0635.png" /></td><td>0.63</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanBekasi_3_0826.png" /></td><td>0.82</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanBekasi_3_11200007.png" /></td><td>1.120000</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanBekasi_3_13500008.png" /></td><td>1.350000</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanBekasi_3_20000009.png" /></td><td>2.000000</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanBekasi_3_242000010.png" /></td><td>2.420000</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanBekasi_3_311000011.png" /></td><td>3.110000</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanBekasi_3_12.png" /></td><td></td></tr></table>', layer: layer_PertumbuhanBekasi_3},
-            {label: 'KepadatanBekasi<br /><table><tr><td style="text-align: center;"><img src="legend/KepadatanBekasi_2_60000000000.png" /></td><td>6000.000000</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanBekasi_2_70000000001.png" /></td><td>7000.000000</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanBekasi_2_90000000002.png" /></td><td>9000.000000</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanBekasi_2_110000000003.png" /></td><td>11000.000000</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanBekasi_2_120000000004.png" /></td><td>12000.000000</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanBekasi_2_130000000005.png" /></td><td>13000.000000</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanBekasi_2_140000000006.png" /></td><td>14000.000000</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanBekasi_2_150000000007.png" /></td><td>15000.000000</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanBekasi_2_170000000008.png" /></td><td>17000.000000</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanBekasi_2_180000000009.png" /></td><td>18000.000000</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanBekasi_2_1900000000010.png" /></td><td>19000.000000</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanBekasi_2_11.png" /></td><td></td></tr></table>', layer: layer_KepadatanBekasi_2},
-            {label: 'KotaBekasi<br /><table><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_Bantargebang0.png" /></td><td>Bantargebang</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_BekasiBarat1.png" /></td><td>Bekasi Barat</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_BekasiSelatan2.png" /></td><td>Bekasi Selatan</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_BekasiTimur3.png" /></td><td>Bekasi Timur</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_BekasiUtara4.png" /></td><td>Bekasi Utara</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_Jatiasih5.png" /></td><td>Jatiasih</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_Jatisampurna6.png" /></td><td>Jatisampurna</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_Medansatria7.png" /></td><td>Medansatria</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_Mustikajaya8.png" /></td><td>Mustikajaya</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_PondokGede9.png" /></td><td>Pondok Gede</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_PondokMelati10.png" /></td><td>Pondok Melati</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_Rawalumbu11.png" /></td><td>Rawalumbu</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_12.png" /></td><td></td></tr></table>', layer: layer_KotaBekasi_1},
+            {label: 'Kantor Pemerintahan<br /><table><tr><td style="text-align: center;"><img src="legend/KantorPemerintahan_7_KantorCamat0.png" /></td><td>Kantor Camat</td></tr><tr><td style="text-align: center;"><img src="legend/KantorPemerintahan_7_KantorKepalaDesa1.png" /></td><td>Kantor Kepala Desa</td></tr><tr><td style="text-align: center;"><img src="legend/KantorPemerintahan_7_KantorLurah2.png" /></td><td>Kantor Lurah</td></tr><tr><td style="text-align: center;"><img src="legend/KantorPemerintahan_7_KantorPolisi3.png" /></td><td>Kantor Polisi</td></tr><tr><td style="text-align: center;"><img src="legend/KantorPemerintahan_7_KantorWaliKota4.png" /></td><td>Kantor Wali Kota</td></tr></table>', layer: layer_KantorPemerintahan_7},
+            {label: 'Tempat Ibadah<br /><table><tr><td style="text-align: center;"><img src="legend/TempatIbadah_6_Gereja0.png" /></td><td>Gereja</td></tr><tr><td style="text-align: center;"><img src="legend/TempatIbadah_6_Masjid1.png" /></td><td>Masjid</td></tr><tr><td style="text-align: center;"><img src="legend/TempatIbadah_6_PeribadatanSosialLainnya2.png" /></td><td>Peribadatan/Sosial Lainnya</td></tr><tr><td style="text-align: center;"><img src="legend/TempatIbadah_6_Pura3.png" /></td><td>Pura</td></tr></table>', layer: layer_TempatIbadah_6},
+            {label: '<img src="legend/Sekolah_5.png" /> Sekolah', layer: layer_Sekolah_5},
+            {label: 'Jumlah Penduduk<br /><table><tr><td style="text-align: center;"><img src="legend/JumlahPenduduk_4_1500000.png" /></td><td>< 150.000</td></tr><tr><td style="text-align: center;"><img src="legend/JumlahPenduduk_4_1500002000001.png" /></td><td>150.000 - 200.000</td></tr><tr><td style="text-align: center;"><img src="legend/JumlahPenduduk_4_2000002500002.png" /></td><td>200.000 - 250.000</td></tr><tr><td style="text-align: center;"><img src="legend/JumlahPenduduk_4_2500003000003.png" /></td><td>250.000 - 300.000</td></tr><tr><td style="text-align: center;"><img src="legend/JumlahPenduduk_4_3000004.png" /></td><td>> 300.000</td></tr></table>', layer: layer_JumlahPenduduk_4},
+            {label: 'Pertumbuhan Penduduk<br /><table><tr><td style="text-align: center;"><img src="legend/PertumbuhanPenduduk_3_050.png" /></td><td>< 0.5%</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanPenduduk_3_0511.png" /></td><td>0.5% - 1%</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanPenduduk_3_1152.png" /></td><td>1% - 1.5%</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanPenduduk_3_1523.png" /></td><td>1.5% - 2%</td></tr><tr><td style="text-align: center;"><img src="legend/PertumbuhanPenduduk_3_24.png" /></td><td>> 2%</td></tr></table>', layer: layer_PertumbuhanPenduduk_3},
+            {label: 'Kepadatan Penduduk<br /><table><tr><td style="text-align: center;"><img src="legend/KepadatanPenduduk_2_5000km20.png" /></td><td>< 5.000 km2</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanPenduduk_2_500010000km21.png" /></td><td>5.000 - 10.000 km2</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanPenduduk_2_1000015000km22.png" /></td><td>10.000 - 15.000 km2</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanPenduduk_2_1500020000km23.png" /></td><td>15.000 - 20.000 km2</td></tr><tr><td style="text-align: center;"><img src="legend/KepadatanPenduduk_2_20000km24.png" /></td><td>> 20.000 km2</td></tr></table>', layer: layer_KepadatanPenduduk_2},
+            {label: 'Kota Bekasi<br /><table><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_Bantargebang0.png" /></td><td>Bantargebang</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_BekasiBarat1.png" /></td><td>Bekasi Barat</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_BekasiSelatan2.png" /></td><td>Bekasi Selatan</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_BekasiTimur3.png" /></td><td>Bekasi Timur</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_BekasiUtara4.png" /></td><td>Bekasi Utara</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_Jatiasih5.png" /></td><td>Jatiasih</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_Jatisampurna6.png" /></td><td>Jatisampurna</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_Medansatria7.png" /></td><td>Medansatria</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_Mustikajaya8.png" /></td><td>Mustikajaya</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_PondokGede9.png" /></td><td>Pondok Gede</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_PondokMelati10.png" /></td><td>Pondok Melati</td></tr><tr><td style="text-align: center;"><img src="legend/KotaBekasi_1_Rawalumbu11.png" /></td><td>Rawalumbu</td></tr></table>', layer: layer_KotaBekasi_1},
             {label: "OSM Standard", layer: layer_OSMStandard_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
@@ -1392,12 +978,12 @@
               i++;
         });
         var i = 0;
-        layer_KepadatanBekasi_2.eachLayer(function(layer) {
+        layer_KepadatanPenduduk_2.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Kecamatan'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Kecamatan']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_KepadatanBekasi_2'});
+            layer.bindTooltip((layer.feature.properties['Kecamatan'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Kecamatan']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_KepadatanPenduduk_2'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1405,12 +991,12 @@
               i++;
         });
         var i = 0;
-        layer_PertumbuhanBekasi_3.eachLayer(function(layer) {
+        layer_PertumbuhanPenduduk_3.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Kecamatan'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Kecamatan']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_PertumbuhanBekasi_3'});
+            layer.bindTooltip((layer.feature.properties['Kecamatan'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Kecamatan']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_PertumbuhanPenduduk_3'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -1418,27 +1004,27 @@
               i++;
         });
         var i = 0;
-        layer_PendudukBekasi_4.eachLayer(function(layer) {
+        layer_JumlahPenduduk_4.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Kecamatan'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Kecamatan']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_PendudukBekasi_4'});
+            layer.bindTooltip((layer.feature.properties['Kecamatan'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Kecamatan']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_JumlahPenduduk_4'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-        resetLabels([layer_KotaBekasi_1,layer_KepadatanBekasi_2,layer_PertumbuhanBekasi_3,layer_PendudukBekasi_4]);
+        resetLabels([layer_KotaBekasi_1,layer_KepadatanPenduduk_2,layer_PertumbuhanPenduduk_3,layer_JumlahPenduduk_4]);
         map.on("zoomend", function(){
-            resetLabels([layer_KotaBekasi_1,layer_KepadatanBekasi_2,layer_PertumbuhanBekasi_3,layer_PendudukBekasi_4]);
+            resetLabels([layer_KotaBekasi_1,layer_KepadatanPenduduk_2,layer_PertumbuhanPenduduk_3,layer_JumlahPenduduk_4]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_KotaBekasi_1,layer_KepadatanBekasi_2,layer_PertumbuhanBekasi_3,layer_PendudukBekasi_4]);
+            resetLabels([layer_KotaBekasi_1,layer_KepadatanPenduduk_2,layer_PertumbuhanPenduduk_3,layer_JumlahPenduduk_4]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_KotaBekasi_1,layer_KepadatanBekasi_2,layer_PertumbuhanBekasi_3,layer_PendudukBekasi_4]);
+            resetLabels([layer_KotaBekasi_1,layer_KepadatanPenduduk_2,layer_PertumbuhanPenduduk_3,layer_JumlahPenduduk_4]);
         });
         </script>
     </body>
